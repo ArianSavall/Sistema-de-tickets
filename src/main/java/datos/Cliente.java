@@ -4,8 +4,6 @@ import java.util.List;
 
 public class Cliente {
 	private long idCliente;
-	private List<Ticket> ticketsHistorial;
-	private List<Ticket> ticketsAbiertos;
 	private String area;
 
 }
