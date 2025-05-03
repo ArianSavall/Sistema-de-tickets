@@ -1,7 +1,8 @@
 package datos;
 
 import java.util.List;
+import java.util.Set;
 
 public class Soporte {
-	private List<Especialidad> especialidades;
+	private Set<Especialidad> especialidades;
 }
