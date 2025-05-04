@@ -1,5 +1,6 @@
 package datos;
 
+
 public abstract class Usuario {
 	private String nombre;
 	private String apellido;

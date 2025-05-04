@@ -5,4 +5,5 @@ public class Tarea {
 	private String descripcion;
 	private boolean completada;
 	private String nombre;
+	
 }
