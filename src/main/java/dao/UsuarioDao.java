@@ -1,37 +1,62 @@
 package dao;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import datos.Usuario;
 
+
 public class UsuarioDao {
-	private static Session session;
-	private Transaction tx;
+	protected static Session session;
+	protected Transaction tx;
 	
-	private void iniciaOperacion() throws HibernateException{
+	protected void iniciaOperacion() throws HibernateException{
 		session = HibernateUtil.getSessionFactory().openSession(); 
 		tx = session.beginTransaction(); 
 	}
 	
-	private void manejaExcepcion (HibernateException he) throws HibernateException{
+	protected void manejaExcepcion (HibernateException he) throws HibernateException{
 		tx.rollback();
 		throw new HibernateException ("ERROR en la capa de acceso de datos", he); 
 	}
 	
-	public int agregar(Usuario objeto) {
-		int id = 0; 
+	public void agregar(Usuario usuario) {
 		try {
 			iniciaOperacion(); 
-			session.persist(objeto);
+			session.persist(usuario);
 			tx.commit();
 		} catch (HibernateException he) {
 			manejaExcepcion(he); 
+			throw he; 
 		}finally {
 			session.close(); 
 		}
-		
-		return id; 
 	}
 	
+	public void actualizar(Usuario usuario) {
+		try {
+			iniciaOperacion();
+			session.merge(usuario);
+			tx.commit();
+		} catch (HibernateException he) {
+			manejaExcepcion(he);
+			throw he;
+		} finally {
+			session.close();
+		}
+	}
 	
+	public void eliminar (Usuario usuario) {
+		try {
+			iniciaOperacion(); 
+			session.remove(usuario);
+			tx.commit();
+		} catch (HibernateException he) {
+			manejaExcepcion(he);
+			throw he;
+		} finally {
+			session.close();
+		}
+	}
+
 }

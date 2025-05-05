@@ -21,8 +21,5 @@
 			<key column="cuil"/>
 		</joined-subclass>
 		
-		<joined-subclass name="datos.Soporte" table="soporte">
-			<key column="cuil"/>
-		</joined-subclass>
 	</class>
 </hibernate-mapping>

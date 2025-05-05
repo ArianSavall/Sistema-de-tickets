@@ -1,5 +1,4 @@
 package datos;
-import java.util.List;
 
 public class Cliente extends Usuario {
 	private String area;

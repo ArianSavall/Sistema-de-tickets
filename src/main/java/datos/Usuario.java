@@ -73,10 +73,4 @@ public abstract class Usuario {
 		return "Usuario [nombre=" + nombre + ", apellido=" + apellido + ", email=" + email + ", password=" + password
 				+ ", cuil=" + cuil + ", fotoPerfil=" + fotoPerfil + "]";
 	}
-	
-	
-	
-	
-	
-	
 }
