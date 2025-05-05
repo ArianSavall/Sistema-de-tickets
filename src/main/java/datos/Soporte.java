@@ -9,7 +9,7 @@ public class Soporte extends Usuario{
 
 	public Soporte(String nombre, String apellido, String email, String password, String cuil, String fotoPerfil, Set<Especialidad> especialidades) {
 		super(nombre, apellido, email, password, cuil, fotoPerfil);
-		//this.especialidades = especialidades;
+		this.especialidades = especialidades;
 	}
 
 	public Set<Especialidad> getEspecialidades() {

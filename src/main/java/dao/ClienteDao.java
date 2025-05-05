@@ -6,7 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import datos.Cliente;
-import datos.Usuario;
+
 
 
 public class ClienteDao {
