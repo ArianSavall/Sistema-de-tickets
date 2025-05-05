@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="datos.Tarea" table="tarea">
+		<id column="id_tarea" name="id">
+			<generator class="identity"></generator>
+		</id>
+		<property name="descripcion" column="descripcion" type="string"></property>
+		<property name="completada" column="completada" type="boolean"></property>
+		<property name="nombre" column="nombre" type="string"></property>
+	</class>
+</hibernate-mapping>
+
