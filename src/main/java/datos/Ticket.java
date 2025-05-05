@@ -1,11 +1,9 @@
 package datos;
 
 import java.time.LocalDateTime;
-<<<<<<< HEAD
 import java.util.List;
-=======
->>>>>>> mapeo-tarea-y-ticket
 import java.util.Set;
+
 
 public class Ticket {
 	private long id;
