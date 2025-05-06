@@ -1,20 +1,13 @@
 package datos;
 
-import java.util.List;
-
-
-public class Cliente {
+public class Cliente extends Usuario {
 	private String area;
 
-	
-	
-	public Cliente() {
-		super();
-	}
+	public Cliente(){}
 
-	@Override
-	public String toString() {
-		return "Cliente [area=" + area + "]";
+	public Cliente(String nombre, String apellido, String email, String password, String cuil, String fotoPerfil, String area) {
+		super(nombre, apellido, email, password, cuil, fotoPerfil);
+		this.area = area;
 	}
 
 	public String getArea() {
@@ -24,5 +17,13 @@ public class Cliente {
 	public void setArea(String area) {
 		this.area = area;
 	}
+
+	@Override
+	public String toString() {
+		return "Cliente [" + super.toString() +"area=" + area + "]";
+	} 
+	
+	
+	
 	
 }

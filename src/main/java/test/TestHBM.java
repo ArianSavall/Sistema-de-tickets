@@ -1,5 +1,4 @@
 package test;
-
 import org.hibernate.Session;
 import dao.HibernateUtil;
 

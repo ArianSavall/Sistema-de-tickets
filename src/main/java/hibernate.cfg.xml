@@ -18,5 +18,7 @@
 		<mapping resource="mapeos/Comentario.hbm.xml" />
 		<mapping resource="mapeos/Especialidad.hbm.xml" />
 		<mapping resource="mapeos/Valoracion.hbm.xml" />
+		<mapping resource="mapeos/Especialidad.hbm.xml" />
+		<mapping resource="mapeos/Usuario.hbm.xml" />
 	</session-factory>
 </hibernate-configuration>
