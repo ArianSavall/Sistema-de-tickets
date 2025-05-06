@@ -29,11 +29,11 @@ public class SoporteABM {
 		return dao.traer(cuil); 
 	}
 	
-	public List<Soporte> lista (){
+	public List<Soporte> traerSoportes (){
 		return dao.traerLista(); 
 	}
 	
-	public List<Soporte> listaEspecialidad (String nombre){
+	public List<Soporte> traerSoportePorEspecialidad (String nombre){
 		return dao.traerPorEspecialidad(nombre); 
 	}
 }

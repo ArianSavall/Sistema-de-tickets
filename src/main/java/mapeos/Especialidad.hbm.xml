@@ -8,9 +8,9 @@
         </id>
         <property column="nombre" name="nombre" type="string" />
         <property name="descripcion" column="descripcion" type="string"/>
-        <set table="especialidad-soporte" name="soportes" outer-join="true">
+        <set table="especialidad-soporte" name="soportes" outer-join="true" lazy="false">
             <key column="id_especialidad"/> 
-            <many-to-many column="cuil" class="datos.Soporte"/> 
+            <many-to-many column="soporte_cuil" class="datos.Soporte"/> 
         </set>
         
     </class>

@@ -23,7 +23,7 @@
 		
 		<joined-subclass name="datos.Soporte" table="soporte">
     		<key column="cuil"/>
-    		<set name="especialidades" table="especialidad-soporte" cascade="save-update">
+    		<set name="especialidades" table="especialidad-soporte" lazy="false">
 		        <key column="soporte_cuil"/>
 		        <many-to-many column="id_especialidad" class="datos.Especialidad"/>
    			</set>

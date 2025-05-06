@@ -80,7 +80,7 @@ public class SoporteDao {
 		try {
 			iniciaOperacion (); 
 			lista = session.createSelectionQuery(
-					"from Soporte s order by s.apellido asc, s.nombre asc", Soporte.class).getResultList();
+					"from Soporte s ", Soporte.class).getResultList();
 		} finally {
 			session.close();
 		}
