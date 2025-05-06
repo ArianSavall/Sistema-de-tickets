@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="datos.Especialidad" table="especialidad">
+        <id column="id_especialidad" name="id">
+            <generator class="identity" />
+        </id>
+        <property column="nombre" name="nombre" type="string" />
+        <property name="descripcion" column="descripcion" type="string"/>
+        <set table="especialidad-soporte" name="soportes" outer-join="true" lazy="false">
+            <key column="id_especialidad"/> 
+            <many-to-many column="soporte_cuil" class="datos.Soporte"/> 
+        </set>
+        
+    </class>
+</hibernate-mapping>

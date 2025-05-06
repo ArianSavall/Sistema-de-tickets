@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="datos.Usuario" table="usuario">
+		<id name="cuil" column="cuil">
+			<generator class="assigned"/>
+		</id>
+		<property name="nombre" column="nombre" type="string"></property>
+		<property name="apellido" column="apellido" type="string"></property>
+		<property name="email" column="email" type="string"></property>
+		<property name="password" column="password" type="string"></property>
+		<property name="fotoPerfil" column="foto_perfil" type="string"></property>
+		
+		<joined-subclass name="datos.Cliente" table="cliente">
+			<key column="cuil"/>
+			<property column="area" name="area" type="string"/>
+		</joined-subclass>
+		
+		<joined-subclass name="datos.Admin" table="admin">
+			<key column="cuil"/>
+		</joined-subclass>
+		
+		<joined-subclass name="datos.Soporte" table="soporte">
+    		<key column="cuil"/>
+    		<set name="especialidades" table="especialidad-soporte" lazy="false">
+		        <key column="soporte_cuil"/>
+		        <many-to-many column="id_especialidad" class="datos.Especialidad"/>
+   			</set>
+		</joined-subclass>
+	</class>
+</hibernate-mapping>

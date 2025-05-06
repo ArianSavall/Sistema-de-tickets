@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class name="datos.Valoracion" table="valoracion">
+		<id column="id_valoracion" name="id">
+			<generator class="foreign">
+			<param name="property">ticketAsociado</param>
+			</generator>
+		</id>
+		<property column="puntaje" name="puntaje" type="string" />
+		<property column="fecha" name="fecha" type="string" />
+		<property column="comentario" name="comentario" type="string" />
+		<one-to-one name="ticketAsociado" class="datos.Ticket"></one-to-one>
+	</class>
+</hibernate-mapping>

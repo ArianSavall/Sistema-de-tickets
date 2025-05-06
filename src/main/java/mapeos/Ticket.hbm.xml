@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="datos.Ticket" table="ticket">
+		<id column="id_ticket" name="id">
+			<generator class="identity"></generator>
+		</id>
+		<property name="asunto" column="asunto" type="string"></property>
+		<property name="descripcion" column="descripcion" type="string"></property>
+		<property name="fechaAlta" column="fecha_alta" type="LocalDate"></property>
+		<property name="fechaBaja" column="fecha_baja" type="LocalDate"></property>
+		<property name="prioridad" column="prioridad" type="string"></property>
+		<property name="estado" column="estado" type="string"></property>
+		<many-to-one name="cliente" class="datos.Cliente" column="cliente_cuil" not-null="true"></many-to-one>
+		<many-to-one name="soporte" class="datos.Soporte" column="soporte_cuil" not-null="true"></many-to-one>
+		<set name="tareas" table="tarea" cascade="all-delete-orphan" lazy="true" order-by="id asc">
+			<key column="id_ticket" />
+			<one-to-many class="datos.Tarea"/> 
+		</set>
+		<set name="comentarios" table="comentario" cascade="all-delete-orphan" lazy="true" order-by="id asc">
+			<key column="id_ticket" />
+			<one-to-many class="datos.Comentario"/> 
+		</set>
+		<one-to-one name="valoracion" class="datos.Valoracion"></one-to-one>
+	</class>
+</hibernate-mapping>
