@@ -1,8 +1,10 @@
 package negocio;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 import java.util.Set;
 
+import Excepciones.CuilDuplicadoException;
 import dao.SoporteDao;
 import datos.Especialidad;
 import datos.Soporte;
@@ -11,7 +13,7 @@ public class SoporteABM {
 	SoporteDao dao = new SoporteDao (); 
 	
 	public void agregar (String nombre, String apellido, String email, String password, String cuil, String fotoPerfil, Set<Especialidad> especialidades) {
-		Soporte s = new Soporte (nombre, apellido, email, password, cuil, fotoPerfil, especialidades); 
+		Soporte s = new Soporte (nombre, apellido, email, password, cuil, fotoPerfil, especialidades);
 		dao.agregar(s);
 	}
 	

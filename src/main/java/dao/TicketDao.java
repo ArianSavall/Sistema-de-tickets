@@ -1,6 +1,7 @@
 package dao;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Hibernate;
@@ -149,7 +150,17 @@ public class TicketDao {
 		}
 		return lista;
 	}
-
-
-
+	
+	public List<Ticket> traerTicketsPorCuil(String cuil){
+		List<Ticket> tickets = new ArrayList<>();
+		try {
+			iniciaOperacion();
+			String hql = "from Ticket t where t.soporte.cuil = :cuil";
+			tickets = session.createQuery(hql, Ticket.class).setParameter("cuil", cuil).getResultList();
+				
+		} finally {
+			session.close();
+		}
+		return tickets;
+	}
 }

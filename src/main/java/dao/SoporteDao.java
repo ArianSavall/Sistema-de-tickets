@@ -1,5 +1,6 @@
 package dao;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -21,7 +22,7 @@ public class SoporteDao {
 		throw new HibernateException ("ERROR en la capa de acceso de datos", he); 
 	}
 	
-	public void agregar(Soporte soporte) {
+	public void agregar(Soporte soporte){
 		try {
 			iniciaOperacion(); 
 			session.persist(soporte);
@@ -29,7 +30,8 @@ public class SoporteDao {
 		} catch (HibernateException he) {
 			manejaExcepcion(he); 
 			throw he; 
-		}finally {
+		}
+		finally {
 			session.close(); 
 		}
 	}

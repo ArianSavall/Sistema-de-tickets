@@ -1,5 +1,6 @@
 package datos;
 
+import java.util.Objects;
 
 public abstract class Usuario {
 	private String nombre;
@@ -74,4 +75,9 @@ public abstract class Usuario {
 		return "Usuario [nombre=" + nombre + ", apellido=" + apellido + ", email=" + email + ", password=" + password
 				+ ", cuil=" + cuil + ", fotoPerfil=" + fotoPerfil + "]";
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(cuil);
+	}	
 }
