@@ -35,4 +35,5 @@ public class ValoracionABM {
 	public List<Valoracion> traer() {
 		return dao.traerTodos();
 	}
+	
 }

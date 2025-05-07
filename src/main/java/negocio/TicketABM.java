@@ -38,5 +38,10 @@ public class TicketABM {
 	public Ticket traerTicketCompleto(long id) {
 		return dao.traerTicketCompleto(id);
 	}
-	
+	public List<Ticket> traerPorFechaAltaEntre(LocalDateTime desde, LocalDateTime hasta) {
+		return dao.traerPorFechaAltaEntre(desde, hasta);
+	}
+	public List<Ticket> traerTicketsCerradosEntre(LocalDateTime desde, LocalDateTime hasta) {
+		return dao.traerTicketsCerradosEntre(desde, hasta);
+	}
 }

@@ -1,11 +1,14 @@
 package dao;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
+import datos.Estado;
 import datos.Ticket;
 
 public class TicketDao {
@@ -106,5 +109,47 @@ public class TicketDao {
 	    }
 	    return objeto;
 	}
+	
+	public List<Ticket> traerPorFechaAltaEntre(LocalDateTime desde, LocalDateTime hasta) {
+		List<Ticket> lista = null;
+		try {
+			iniciaOperacion();
+			String hql = "SELECT DISTINCT t FROM Ticket t " +
+		             "LEFT JOIN FETCH t.tareas " +
+		             "LEFT JOIN FETCH t.comentarios " +
+		             "WHERE t.fechaAlta BETWEEN :desde AND :hasta";
+			lista = session.createQuery(hql, Ticket.class)
+					.setParameter("desde", desde)
+					.setParameter("hasta", hasta)
+					.getResultList();
+		}  catch (HibernateException he) {
+	        manejaExcepcion(he);
+	        throw he;
+	    }finally {
+			session.close();
+		}
+		return lista;
+	}
+	
+	public List<Ticket> traerTicketsCerradosEntre(LocalDateTime desde, LocalDateTime hasta) {
+		List<Ticket> lista = null;
+		try {
+			iniciaOperacion();
+			String hql = "SELECT DISTINCT t FROM Ticket t " +
+			             "LEFT JOIN FETCH t.tareas " +
+			             "LEFT JOIN FETCH t.comentarios " +
+			             "WHERE t.estado = :estado AND t.fechaBaja BETWEEN :desde AND :hasta";
+			lista = session.createQuery(hql, Ticket.class)
+				.setParameter("estado", Estado.COMPLETADO)
+				.setParameter("desde", desde)
+				.setParameter("hasta", hasta)
+				.getResultList();
+		} finally {
+			session.close();
+		}
+		return lista;
+	}
+
+
 
 }

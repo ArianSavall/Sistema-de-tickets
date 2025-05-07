@@ -16,26 +16,12 @@ public class TestTraerObjetos {
 		Session session = factory.openSession();
 		Transaction tx = session.beginTransaction();
 		
-		
-		// TICKETS
-        List<Ticket> tickets = session.createQuery("FROM Ticket", Ticket.class).list();
-        System.out.println("==== TICKETS ====");
-        tickets.forEach(System.out::println);
-
-        // TAREAS
+		/**
+		// TAREAS
         List<Tarea> tareas = session.createQuery("FROM Tarea", Tarea.class).list();
         System.out.println("==== TAREAS ====");
         tareas.forEach(System.out::println);
 
-        // COMENTARIOS
-        List<Comentario> comentarios = session.createQuery("FROM Comentario", Comentario.class).list();
-        System.out.println("==== COMENTARIOS ====");
-        comentarios.forEach(System.out::println);
-
-        // VALORACIONES
-        List<Valoracion> valoraciones = session.createQuery("FROM Valoracion", Valoracion.class).list();
-        System.out.println("==== VALORACIONES ====");
-        valoraciones.forEach(System.out::println);
 
         // CLIENTES
         List<Cliente> clientes = session.createQuery("FROM Cliente", Cliente.class).list();
@@ -57,6 +43,21 @@ public class TestTraerObjetos {
         System.out.println("==== ESPECIALIDADES ====");
         especialidades.forEach(System.out::println);
 		
+		 */
+		// TICKETS
+        List<Ticket> tickets = session.createQuery("FROM Ticket", Ticket.class).list();
+        System.out.println("==== TICKETS ====");
+        tickets.forEach(System.out::println);
+
+        // COMENTARIOS
+        List<Comentario> comentarios = session.createQuery("FROM Comentario", Comentario.class).list();
+        System.out.println("==== COMENTARIOS ====");
+        comentarios.forEach(System.out::println);
+
+        // VALORACIONES
+        List<Valoracion> valoraciones = session.createQuery("FROM Valoracion", Valoracion.class).list();
+        System.out.println("==== VALORACIONES ====");
+        valoraciones.forEach(System.out::println);
 		
 
 		// --- Finalizar ---
