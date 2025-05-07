@@ -22,8 +22,15 @@ public class Soporte extends Usuario{
 
 	@Override
 	public String toString() {
-		return "Soporte ["+ super.toString() + "especialidades=" + especialidades + "]";
+	    return "Soporte{" +
+	           "cuil='" + getCuil() + '\'' +
+	           ", nombre='" + getNombre() + '\'' +
+	           ", apellido='" + getApellido() + '\'' +
+	           ", email='" + getEmail() + '\'' +
+	           '}';
 	}
+
+
 	
 	
 	

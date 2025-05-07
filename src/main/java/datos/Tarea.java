@@ -58,9 +58,14 @@ public class Tarea {
 
 	@Override
 	public String toString() {
-		return "Tarea [id=" + id + ", descripcion=" + descripcion + ", completada=" + completada + ", nombre=" + nombre
-				+ ", ticket=" + ticket + "]";
+	    return "Tarea [id=" + id +
+	           ", descripcion=" + descripcion +
+	           ", completada=" + completada +
+	           ", nombre=" + nombre +
+	           ", ticketId=" + (ticket != null ? ticket.getId() : "null") +
+	           "]";
 	}
+
 	
 	
 }

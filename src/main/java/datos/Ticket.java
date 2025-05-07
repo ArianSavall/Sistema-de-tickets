@@ -132,5 +132,21 @@ public class Ticket {
 	public void setValoracion(Valoracion valoracion) {
 		this.valoracion = valoracion;
 	}
-	
+
+	@Override
+	public String toString() {
+	    return "Ticket [id=" + id +
+	           ", asunto=" + asunto +
+	           ", descripcion=" + descripcion +
+	           ", fechaAlta=" + fechaAlta +
+	           ", fechaBaja=" + fechaBaja +
+	           ", prioridad=" + prioridad +
+	           ", estado=" + estado +
+	           ", soporteCuil=" + (soporte != null ? soporte.getCuil() : "null") +
+	           ", clienteCuil=" + (cliente != null ? cliente.getCuil() : "null") +
+	           ", tareas=" + (tareas != null ? tareas.size() + " tareas" : "null") +
+	           ", comentarios=" + (comentarios != null ? comentarios.size() + " comentarios" : "null") +
+	           ", valoracion=" + (valoracion != null ? "sí" : "no") +
+	           "]";
+	}
 }

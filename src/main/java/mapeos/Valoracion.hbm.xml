@@ -9,8 +9,8 @@
 			<param name="property">ticketAsociado</param>
 			</generator>
 		</id>
-		<property column="puntaje" name="puntaje" type="string" />
-		<property column="fecha" name="fecha" type="string" />
+		<property column="puntaje" name="puntaje" type="int" />
+		<property column="fecha" name="fecha" type="LocalDateTime" />
 		<property column="comentario" name="comentario" type="string" />
 		<one-to-one name="ticketAsociado" class="datos.Ticket"></one-to-one>
 	</class>

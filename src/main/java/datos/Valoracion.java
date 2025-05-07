@@ -55,6 +55,13 @@ public class Valoracion {
 	public void setTicketAsociado(Ticket ticketAsociado) {
 		this.ticketAsociado = ticketAsociado;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Valoracion [id=" + id + ", puntaje=" + puntaje + ", fecha=" + fecha + ", comentario=" + comentario
+				+ ", ticketAsociado=" + ticketAsociado + "]";
+	}
 	
 	
 }
