@@ -27,11 +27,11 @@ public class ClienteABM {
 		return dao.traer(cuil); 
 	}
 	
-	public List<Cliente> lista() {
+	public List<Cliente> traerClientes() {
 		return dao.traerLista(); 
 	}
 	
-	public List<Cliente> listaArea (String area){
+	public List<Cliente> traerClientesPorArea (String area){
 		return dao.traerClientesPorArea(area); 
 	}
 }

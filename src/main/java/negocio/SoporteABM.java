@@ -17,8 +17,7 @@ public class SoporteABM {
 		dao.agregar(s);
 	}
 	
-	public void modificar (String cuil) {
-		Soporte s = dao.traer(cuil); 
+	public void modificar (Soporte s) {
 		dao.actualizar(s);
 	}
 	
@@ -35,7 +34,7 @@ public class SoporteABM {
 		return dao.traerLista(); 
 	}
 	
-	public List<Soporte> traerSoportePorEspecialidad (String nombre){
-		return dao.traerPorEspecialidad(nombre); 
+	public List<Soporte> traerSoportePorEspecialidad (Especialidad especialidad){
+		return dao.traerPorEspecialidad(especialidad.getNombre()); 
 	}
 }
