@@ -8,12 +8,24 @@
 		</id>
 		<property name="asunto" column="asunto" type="string"></property>
 		<property name="descripcion" column="descripcion" type="string"></property>
-		<property name="fechaAlta" column="fecha_alta" type="LocalDate"></property>
-		<property name="fechaBaja" column="fecha_baja" type="LocalDate"></property>
-		<property name="prioridad" column="prioridad" type="string"></property>
-		<property name="estado" column="estado" type="string"></property>
+		<property name="fechaAlta" column="fecha_alta" type="LocalDateTime"></property>
+		<property name="fechaBaja" column="fecha_baja" type="LocalDateTime"></property>
+		<property name="estado" column="estado">
+    <type name="org.hibernate.type.EnumType">
+        <param name="enumClass">datos.Estado</param>
+        <param name="useNamed">true</param>
+    </type>
+</property>
+
+<property name="prioridad" column="prioridad">
+    <type name="org.hibernate.type.EnumType">
+        <param name="enumClass">datos.Prioridad</param>
+        <param name="useNamed">true</param>
+    </type>
+</property>
+
 		<many-to-one name="cliente" class="datos.Cliente" column="cliente_cuil" not-null="true"></many-to-one>
-		<many-to-one name="soporte" class="datos.Soporte" column="soporte_cuil" not-null="true"></many-to-one>
+		<many-to-one name="soporte" class="datos.Soporte" column="soporte_cuil" not-null="false"></many-to-one>
 		<set name="tareas" table="tarea" cascade="all-delete-orphan" lazy="true" order-by="id asc">
 			<key column="id_ticket" />
 			<one-to-many class="datos.Tarea"/> 

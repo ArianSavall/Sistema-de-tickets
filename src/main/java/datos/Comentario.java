@@ -3,6 +3,12 @@ package datos;
 import java.time.LocalDateTime;
 
 public class Comentario {
+	@Override
+	public String toString() {
+		return "Comentario [id=" + id + ", fechaHora=" + fechaHora + ", descripcion=" + descripcion + ", emisor="
+				+ emisor + ", ticketAsociado=" + ticketAsociado + "]";
+	}
+
 	private long id;
 	private LocalDateTime fechaHora;
 	private String descripcion;

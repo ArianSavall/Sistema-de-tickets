@@ -44,6 +44,16 @@ public class Especialidad {
 	public void setSoportes(Set<Soporte> soportes) {
 	    this.soportes = soportes;
 	}
+
+	@Override
+	public String toString() {
+	    return "Especialidad{" +
+	        "id=" + id +
+	        ", nombre='" + nombre + '\'' +
+	        ", descripcion='" + descripcion + '\'' +
+	        '}';
+	}
+
 	
 	
 }

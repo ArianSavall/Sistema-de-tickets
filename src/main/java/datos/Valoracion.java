@@ -9,12 +9,9 @@ public class Valoracion {
 	private String comentario;
 	private Ticket ticketAsociado;
 	
-	
-	
 	public Valoracion() {
 		super();
 	}
-	
 	
 	public Valoracion(int puntaje, LocalDateTime fecha, String comentario, Ticket ticketAsociado) {
 		super();
@@ -23,7 +20,6 @@ public class Valoracion {
 		this.comentario = comentario;
 		this.ticketAsociado = ticketAsociado;
 	}
-
 
 	public long getId() {
 		return id;
@@ -54,6 +50,13 @@ public class Valoracion {
 	}
 	public void setTicketAsociado(Ticket ticketAsociado) {
 		this.ticketAsociado = ticketAsociado;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Valoracion [id=" + id + ", puntaje=" + puntaje + ", fecha=" + fecha + ", comentario=" + comentario
+				+ ", ticketAsociado=" + ticketAsociado + "]";
 	}
 	
 	

@@ -9,6 +9,7 @@
 		<property name="descripcion" column="descripcion" type="string"></property>
 		<property name="completada" column="completada" type="boolean"></property>
 		<property name="nombre" column="nombre" type="string"></property>
+		<many-to-one name="ticket" class="datos.Ticket" column="id_ticket" not-null="true"/>
 	</class>
 </hibernate-mapping>
 

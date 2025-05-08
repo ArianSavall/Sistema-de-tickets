@@ -1,4 +1,5 @@
 package dao;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.HibernateException;
@@ -81,5 +82,27 @@ public class ComentarioDao {
 		
 		return comentarios;
 	}
+	
+	public List<Comentario> traerComentariosEntreFechas(LocalDateTime desde, LocalDateTime hasta) {
+		List<Comentario> lista = null;
+		try {
+			iniciaOperacion();
+			String hql = "SELECT DISTINCT c FROM Comentario c " +
+		             "LEFT JOIN FETCH c.emisor " +
+		             "LEFT JOIN FETCH c.ticketAsociado t " +
+		             "LEFT JOIN FETCH t.tareas " +
+		             "LEFT JOIN FETCH t.comentarios " +
+		             "LEFT JOIN FETCH t.valoracion " +  // si necesitás también esto
+		             "WHERE c.fechaHora BETWEEN :desde AND :hasta";
+			lista = session.createQuery(hql, Comentario.class)
+				.setParameter("desde", desde)
+				.setParameter("hasta", hasta)
+				.getResultList();
+		} finally {
+			session.close();
+		}
+		return lista;
+	}
+
 		
 }

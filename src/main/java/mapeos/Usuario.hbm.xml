@@ -12,18 +12,18 @@
 		<property name="password" column="password" type="string"></property>
 		<property name="fotoPerfil" column="foto_perfil" type="string"></property>
 		
-		<joined-subclass name="datos.Cliente" table="cliente">
+		<joined-subclass name="datos.Cliente" table="cliente" lazy="false">
 			<key column="cuil"/>
 			<property column="area" name="area" type="string"/>
 		</joined-subclass>
 		
-		<joined-subclass name="datos.Admin" table="admin">
+		<joined-subclass name="datos.Admin" table="admin" lazy="false">
 			<key column="cuil"/>
 		</joined-subclass>
 		
-		<joined-subclass name="datos.Soporte" table="soporte">
+		<joined-subclass name="datos.Soporte" table="soporte" lazy="false">
     		<key column="cuil"/>
-    		<set name="especialidades" table="especialidad-soporte" lazy="false">
+    		<set name="especialidades" table="especialidad-soporte" cascade="persist, merge" lazy="false">
 		        <key column="soporte_cuil"/>
 		        <many-to-many column="id_especialidad" class="datos.Especialidad"/>
    			</set>

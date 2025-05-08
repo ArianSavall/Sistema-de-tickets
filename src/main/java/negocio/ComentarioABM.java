@@ -1,5 +1,5 @@
 package negocio;
-import java.time.LocalDate;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -28,13 +28,15 @@ public class ComentarioABM {
 		
 	}
 	public void eliminar(long idComentario) {
-	
 		Comentario c = dao.traer(idComentario);
-	// Implementar que si es null que arroje la excepción la Excepción de que el comentario no existe
 		dao.eliminar(c);
 	}
 	public List<Comentario> traer() {
 		return dao.traerTodos();
+	}
+	
+	public List<Comentario> traerComentariosEntreFechas(LocalDateTime desde, LocalDateTime hasta) {
+		return dao.traerComentariosEntreFechas(desde, hasta);
 	}
 
 }

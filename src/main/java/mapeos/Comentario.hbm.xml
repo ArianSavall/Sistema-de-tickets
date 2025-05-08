@@ -6,7 +6,7 @@
 		<id column="id_comentario" name="id">
 			<generator class="identity" />
 		</id>
-		<property column="fecha_hora" name="fechaHora" type="LocalDate" />
+		<property column="fecha_hora" name="fechaHora" type="LocalDateTime" />
 		<property column="descripcion" name="descripcion" type="string" />
 		<many-to-one name="ticketAsociado" class="datos.Ticket" column="id_ticket" not-null="true"></many-to-one>
 		<many-to-one name="emisor" class="datos.Usuario" column="cuil_usuario" not-null="true"></many-to-one>
