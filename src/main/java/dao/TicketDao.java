@@ -69,50 +69,39 @@ public class TicketDao {
 	        session.close();
 	    }
 	}
-
-	public Ticket traer(long id) {
-	    Ticket tarea = null;
-	    try {
-	        iniciaOperacion();
-	        tarea = session.get(Ticket.class, id); 
-	    } catch (HibernateException he) {
-	        manejaExcepcion(he);
-	        throw he;
-	    } finally {
-	        session.close();
-	    }
-	    return tarea;
-	}
 	
-	public List<Ticket> traer() throws HibernateException {
-	    List<Ticket> lista = null;
-	    try {
-	        iniciaOperacion(); 
-	        lista = session.createSelectionQuery(
-	                    "from Ticket t order by t.fechaAlta desc, t.prioridad asc", 
-	                    Ticket.class
-	                ).getResultList();
-	    } finally {
-	        session.close();
-	    }
-	    return lista;
-	}
-
-	public Ticket traerTicketCompleto(long id) throws HibernateException {
+	public Ticket traer(long id) throws HibernateException {
 	    Ticket objeto = null;
 	    try {
 	        iniciaOperacion();            
-	        String hql = "from Ticket t where t.id_ticket = :id";
+	        String hql = "from Ticket t where t.id = :id";
 	        objeto = session.createQuery(hql, Ticket.class).setParameter("id", id).uniqueResult();
-	         Hibernate.initialize(objeto.getTareas());
-	         Hibernate.initialize(objeto.getComentarios());
-	        
+	        if (objeto != null) {
+	            Hibernate.initialize(objeto.getTareas());
+	            Hibernate.initialize(objeto.getComentarios());
+	        }
 	    } finally {
 	        session.close();
 	    }
 	    return objeto;
 	}
 	
+
+	public List<Ticket> traer() throws HibernateException {
+	    List<Ticket> lista = null;
+	    try {
+	        iniciaOperacion(); 
+	        String hql = "from Ticket t " +
+                    	"left join fetch t.tareas " +
+                    	"left join fetch t.comentarios " +
+                    	"order by t.fechaAlta desc, t.prioridad asc";;
+	        lista = session.createSelectionQuery(hql, Ticket.class).getResultList();
+	    } finally {
+	        session.close();
+	    }
+	    return lista;
+	}
+
 	public List<Ticket> traerPorFechaAltaEntre(LocalDateTime desde, LocalDateTime hasta) {
 		List<Ticket> lista = null;
 		try {

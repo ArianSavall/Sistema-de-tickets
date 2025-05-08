@@ -5,6 +5,8 @@ import org.hibernate.Transaction;
 import org.hibernate.SessionFactory;
 import dao.HibernateUtil;
 import datos.*;
+import negocio.ClienteABM;
+import negocio.TicketABM;
 
 import java.time.LocalDateTime;
 import java.util.*;
@@ -45,9 +47,9 @@ public class TestTraerObjetos {
 		
 		 */
 		// TICKETS
-        List<Ticket> tickets = session.createQuery("FROM Ticket", Ticket.class).list();
-        System.out.println("==== TICKETS ====");
-        tickets.forEach(System.out::println);
+//        List<Ticket> tickets = session.createQuery("FROM Ticket", Ticket.class).list();
+//        System.out.println("==== TICKETS ====");
+//        tickets.forEach(System.out::println);
 
         // COMENTARIOS
         List<Comentario> comentarios = session.createQuery("FROM Comentario", Comentario.class).list();
@@ -58,7 +60,6 @@ public class TestTraerObjetos {
         List<Valoracion> valoraciones = session.createQuery("FROM Valoracion", Valoracion.class).list();
         System.out.println("==== VALORACIONES ====");
         valoraciones.forEach(System.out::println);
-		
 
 		// --- Finalizar ---
 		tx.commit();

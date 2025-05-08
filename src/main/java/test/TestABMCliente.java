@@ -11,7 +11,6 @@ public class TestABMCliente {
 		
 		abm.agregar("Juan", "Pérez", "juan@mail.com", "1234", "20-23456789-9", "foto.jpg", "Tecnología");
 		
-		
 	}
 
 }
