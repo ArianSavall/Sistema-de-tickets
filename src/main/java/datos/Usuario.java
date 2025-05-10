@@ -3,12 +3,12 @@ package datos;
 import java.util.Objects;
 
 public abstract class Usuario {
-	private String nombre;
-	private String apellido;
-	private String email;
-	private String password;
-	private String cuil;
-	private String fotoPerfil;
+	protected String nombre;
+	protected String apellido;
+	protected String email;
+	protected String password;
+	protected String cuil;
+	protected String fotoPerfil;
 	
 	public Usuario() {}
 
