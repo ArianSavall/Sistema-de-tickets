@@ -1,10 +1,10 @@
 package dao;
 
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import datos.Turno;
 
 import datos.Soporte;
 
@@ -96,6 +96,19 @@ public class SoporteDao {
 	        lista = session.createQuery(
 	            "select s from Soporte s join s.especialidades e  where e.nombre = :nombreEspecialidad ", Soporte.class)
 	            .setParameter("nombreEspecialidad", nombre).getResultList();
+	    } finally {
+	        session.close();
+	    }
+	    return lista;
+	}
+	
+	public List<Soporte> traerPorTurno(Turno turno) {
+	    List<Soporte> lista = null;
+	    try {
+	        iniciaOperacion();
+	        lista = session.createQuery(
+	            "select s from Soporte s where s.turno = :turno ", Soporte.class)
+	            .setParameter("turno", turno).getResultList();
 	    } finally {
 	        session.close();
 	    }
