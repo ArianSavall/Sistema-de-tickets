@@ -5,6 +5,8 @@ import org.hibernate.Transaction;
 import org.hibernate.SessionFactory;
 import dao.HibernateUtil;
 import datos.*;
+import negocio.ClienteABM;
+import negocio.TicketABM;
 
 import java.time.LocalDateTime;
 import java.util.*;
@@ -32,11 +34,6 @@ public class TestTraerObjetos {
         System.out.println("==== SOPORTES ====");
         soportes.forEach(System.out::println);
 
-        // ADMINISTRADORES
-        List<Admin> admins = session.createQuery("FROM Admin", Admin.class).list();
-        System.out.println("==== ADMINISTRADORES ====");
-        admins.forEach(System.out::println);
-
         // ESPECIALIDADES
         List<Especialidad> especialidades = session.createQuery("FROM Especialidad", Especialidad.class).list();
         System.out.println("==== ESPECIALIDADES ====");
@@ -44,9 +41,9 @@ public class TestTraerObjetos {
 		
 		 
 		// TICKETS
-        List<Ticket> tickets = session.createQuery("FROM Ticket", Ticket.class).list();
-        System.out.println("==== TICKETS ====");
-        tickets.forEach(System.out::println);
+//        List<Ticket> tickets = session.createQuery("FROM Ticket", Ticket.class).list();
+//        System.out.println("==== TICKETS ====");
+//        tickets.forEach(System.out::println);
 
         // COMENTARIOS
         List<Comentario> comentarios = session.createQuery("FROM Comentario", Comentario.class).list();
@@ -57,7 +54,6 @@ public class TestTraerObjetos {
         List<Valoracion> valoraciones = session.createQuery("FROM Valoracion", Valoracion.class).list();
         System.out.println("==== VALORACIONES ====");
         valoraciones.forEach(System.out::println);
-		
 
 		// --- Finalizar ---
 		tx.commit();
@@ -110,10 +106,6 @@ public class TestTraerObjetos {
 
 		session.persist(s1);
 		session.persist(s2);
-
-		// --- Crear ADMIN ---
-		Admin a1 = new Admin("Ana", "Admin", "ana@admin.com", "admin", "20309998888", "foto5.jpg");
-		session.persist(a1);
 
 		// --- Crear fechas de prueba ---
 		LocalDateTime fecha1 = LocalDateTime.of(2024, 5, 1, 10, 30);
@@ -200,10 +192,6 @@ public class TestTraerObjetos {
 
 		session.persist(s1);
 		session.persist(s2);
-
-		// --- Crear ADMIN ---
-		Admin a1 = new Admin("Ana", "Admin", "ana@admin.com", "admin", "20309998888", "foto5.jpg");
-		session.persist(a1);
 
 		// --- Crear fechas de prueba ---
 		LocalDateTime fecha1 = LocalDateTime.of(2024, 5, 1, 10, 30);

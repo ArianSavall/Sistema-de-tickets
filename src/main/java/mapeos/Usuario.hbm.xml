@@ -17,12 +17,15 @@
 			<property column="area" name="area" type="string"/>
 		</joined-subclass>
 		
-		<joined-subclass name="datos.Admin" table="admin" lazy="false">
-			<key column="cuil"/>
-		</joined-subclass>
-		
 		<joined-subclass name="datos.Soporte" table="soporte" lazy="false">
     		<key column="cuil"/>
+    		<property name="fechaIngreso" column="fecha_ingreso" type="LocalDateTime"></property>
+    		<property name="turno" column="turno">
+		    	<type name="org.hibernate.type.EnumType">
+		       		 <param name="enumClass">datos.Turno</param>
+		        	<param name="useNamed">true</param>
+		    	</type>
+			</property>
     		<set name="especialidades" table="especialidad-soporte" cascade="persist, merge" lazy="false">
 		        <key column="soporte_cuil"/>
 		        <many-to-many column="id_especialidad" class="datos.Especialidad"/>
