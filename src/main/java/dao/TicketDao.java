@@ -9,6 +9,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import datos.Estado;
+import datos.Prioridad;
 import datos.Ticket;
 
 public class TicketDao {
@@ -150,6 +151,43 @@ public class TicketDao {
 		return lista;
 	}
 
+	public List<Ticket> traerTicketsPorFechaAltaYPrioridad(LocalDateTime fecha, Prioridad prioridad) {
+		List<Ticket> lista = null;
+		try {
+			iniciaOperacion();
+			String hql = "SELECT DISTINCT t FROM Ticket t " +
+			             "LEFT JOIN FETCH t.tareas " +
+			             "LEFT JOIN FETCH t.comentarios " +
+			             "LEFT JOIN FETCH t.valoracion " +
+			             "WHERE t.fechaAlta = :fecha AND t.prioridad = :prioridad";
+			lista = session.createQuery(hql, Ticket.class)
+				.setParameter("fecha", fecha)
+				.setParameter("prioridad", prioridad)
+				.getResultList();
+		} finally {
+			session.close();
+		}
+		return lista;
+	}
 
+	
+	public List<Ticket> traerTicketsPorFechaBajaYEstado(LocalDateTime fecha, Estado estado) {
+		List<Ticket> lista = null;
+		try {
+			iniciaOperacion();
+			String hql = "SELECT DISTINCT t FROM Ticket t " +
+			             "LEFT JOIN FETCH t.tareas " +
+			             "LEFT JOIN FETCH t.comentarios " +
+			             "LEFT JOIN FETCH t.valoracion " +
+			             "WHERE t.fechaBaja = :fecha AND t.estado = :estado";
+			lista = session.createQuery(hql, Ticket.class)
+				.setParameter("fecha", fecha)
+				.setParameter("estado", estado)
+				.getResultList();
+		} finally {
+			session.close();
+		}
+		return lista;
+	}
 
 }

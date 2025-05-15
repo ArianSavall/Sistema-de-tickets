@@ -44,4 +44,14 @@ public class TicketABM {
 	public List<Ticket> traerTicketsCerradosEntre(LocalDateTime desde, LocalDateTime hasta) {
 		return dao.traerTicketsCerradosEntre(desde, hasta);
 	}
+	
+	public List<Ticket> traerTicketsPorFechaAltaYPrioridad(LocalDateTime fecha, Prioridad prioridad) {
+	return dao.traerTicketsPorFechaAltaYPrioridad(fecha, prioridad);
+	}
+
+	
+	public List<Ticket> traerTicketsPorFechaBajaYEstado(LocalDateTime fecha, Estado estado) {
+		return dao.traerTicketsPorFechaBajaYEstado(fecha, estado);
+	}
+	
 }

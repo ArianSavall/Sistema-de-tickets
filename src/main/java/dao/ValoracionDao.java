@@ -1,5 +1,6 @@
 package dao;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -84,4 +85,44 @@ public class ValoracionDao {
 		
 		return valoraciones;
 	}
+	
+	public List<Valoracion> traerValoracionesEntreFechas(LocalDateTime desde, LocalDateTime hasta) {
+		List<Valoracion> lista = null;
+		try {
+			iniciaOperacion();
+			String hql = "SELECT DISTINCT v FROM Valoracion v " +
+			             "LEFT JOIN FETCH v.ticketAsociado t " +
+			             "LEFT JOIN FETCH t.tareas " +
+			             "LEFT JOIN FETCH t.comentarios " +
+			             "WHERE v.fecha BETWEEN :desde AND :hasta";
+			lista = session.createQuery(hql, Valoracion.class)
+					.setParameter("desde", desde)
+					.setParameter("hasta", hasta)
+					.getResultList();
+		} finally {
+			session.close();
+		}
+		return lista;
+	}
+	
+	public List<Valoracion> traerValoracionesPorFechaYPuntaje(LocalDateTime fecha, int puntajeMinimo) {
+		List<Valoracion> lista = null;
+		try {
+			iniciaOperacion();
+			String hql = "SELECT DISTINCT v FROM Valoracion v " +
+			             "LEFT JOIN FETCH v.ticketAsociado t " +
+			             "LEFT JOIN FETCH t.tareas " +
+			             "LEFT JOIN FETCH t.comentarios " +
+			             "WHERE v.fecha = :fecha AND v.puntaje >= :puntaje";
+			lista = session.createQuery(hql, Valoracion.class)
+				.setParameter("fecha", fecha)
+				.setParameter("puntaje", puntajeMinimo)
+				.getResultList();
+		} finally {
+			session.close();
+		}
+		return lista;
+	}
+
+	
 }

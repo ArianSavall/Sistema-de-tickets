@@ -27,13 +27,18 @@ public class ValoracionABM {
 		
 	}
 	public void eliminar(long idValoracion) {
-	
 		Valoracion e = dao.traer(idValoracion);
-	// Implementar que si es null que arroje la excepción la Excepción de que el comentario no existe
 		dao.eliminar(e);
 	}
 	public List<Valoracion> traer() {
 		return dao.traerTodos();
 	}
 	
+	public List<Valoracion> traerValoracionesEntreFechas(LocalDateTime desde, LocalDateTime hasta) {
+		return dao.traerValoracionesEntreFechas(desde, hasta);
+	}
+	
+	public List<Valoracion> traerValoracionesPorFechaYPuntaje(LocalDateTime fecha, int puntajeMinimo) {
+		return dao.traerValoracionesPorFechaYPuntaje(fecha, puntajeMinimo);
+	}
 }

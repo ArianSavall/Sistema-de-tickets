@@ -38,5 +38,7 @@ public class ComentarioABM {
 	public List<Comentario> traerComentariosEntreFechas(LocalDateTime desde, LocalDateTime hasta) {
 		return dao.traerComentariosEntreFechas(desde, hasta);
 	}
-
+	public List<Comentario> traerComentariosPorFechaYUsuario(LocalDateTime fecha, String cuilUsuario) {
+		return dao.traerComentariosPorFechaYUsuario(fecha, cuilUsuario);
+	}
 }

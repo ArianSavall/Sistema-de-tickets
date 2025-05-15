@@ -16,7 +16,6 @@ public class TestTraerObjetos {
 		Session session = factory.openSession();
 		Transaction tx = session.beginTransaction();
 		
-		/**
 		// TAREAS
         List<Tarea> tareas = session.createQuery("FROM Tarea", Tarea.class).list();
         System.out.println("==== TAREAS ====");
@@ -43,7 +42,7 @@ public class TestTraerObjetos {
         System.out.println("==== ESPECIALIDADES ====");
         especialidades.forEach(System.out::println);
 		
-		 */
+		 
 		// TICKETS
         List<Ticket> tickets = session.createQuery("FROM Ticket", Ticket.class).list();
         System.out.println("==== TICKETS ====");

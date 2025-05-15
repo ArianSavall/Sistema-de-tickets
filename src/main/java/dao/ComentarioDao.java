@@ -103,6 +103,28 @@ public class ComentarioDao {
 		}
 		return lista;
 	}
+	
+	public List<Comentario> traerComentariosPorFechaYUsuario(LocalDateTime fecha, String cuilUsuario) {
+		List<Comentario> lista = null;
+		try {
+			iniciaOperacion();
+			String hql = "SELECT DISTINCT c FROM Comentario c " +
+			             "LEFT JOIN FETCH c.emisor " +
+			             "LEFT JOIN FETCH c.ticketAsociado t " +
+			             "LEFT JOIN FETCH t.tareas " +
+			             "LEFT JOIN FETCH t.comentarios " +
+			             "LEFT JOIN FETCH t.valoracion " +
+			             "WHERE c.fechaHora = :fecha AND c.emisor.cuil = :cuil";
+			lista = session.createQuery(hql, Comentario.class)
+				.setParameter("fecha", fecha)
+				.setParameter("cuil", cuilUsuario)
+				.getResultList();
+		} finally {
+			session.close();
+		}
+		return lista;
+	}
+
 
 		
 }
