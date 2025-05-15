@@ -1,6 +1,7 @@
 package dao;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Hibernate;
@@ -9,7 +10,10 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import datos.Estado;
+
 import datos.Prioridad;
+
+import datos.Soporte;
 import datos.Ticket;
 
 public class TicketDao {
@@ -54,6 +58,7 @@ public class TicketDao {
 	        session.close();
 	    }
 	}
+	
 	
 	public void eliminar(Ticket objeto) {
 	    try {
@@ -151,6 +156,7 @@ public class TicketDao {
 		return lista;
 	}
 
+
 	public List<Ticket> traerTicketsPorFechaAltaYPrioridad(LocalDateTime fecha, Prioridad prioridad) {
 		List<Ticket> lista = null;
 		try {
@@ -188,6 +194,21 @@ public class TicketDao {
 			session.close();
 		}
 		return lista;
+	}
+
+
+	
+	public List<Ticket> traerTicketsPorCuil(String cuil){
+		List<Ticket> tickets = new ArrayList<>();
+		try {
+			iniciaOperacion();
+			String hql = "from Ticket t where t.soporte.cuil = :cuil OR t.cliente.cuil = :cuil";
+			tickets = session.createQuery(hql, Ticket.class).setParameter("cuil", cuil).getResultList();
+				
+		} finally {
+			session.close();
+		}
+		return tickets;
 	}
 
 }

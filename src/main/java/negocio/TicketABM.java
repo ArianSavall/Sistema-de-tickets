@@ -8,6 +8,7 @@ import dao.TicketDao;
 import datos.Cliente;
 import datos.Estado;
 import datos.Prioridad;
+import datos.Soporte;
 import datos.Ticket;
 
 public class TicketABM {
@@ -45,6 +46,7 @@ public class TicketABM {
 		return dao.traerTicketsCerradosEntre(desde, hasta);
 	}
 	
+
 	public List<Ticket> traerTicketsPorFechaAltaYPrioridad(LocalDateTime fecha, Prioridad prioridad) {
 	return dao.traerTicketsPorFechaAltaYPrioridad(fecha, prioridad);
 	}
@@ -53,5 +55,18 @@ public class TicketABM {
 	public List<Ticket> traerTicketsPorFechaBajaYEstado(LocalDateTime fecha, Estado estado) {
 		return dao.traerTicketsPorFechaBajaYEstado(fecha, estado);
 	}
+
+	public List<Ticket> traerTicketsPorSoporte(Soporte soporte){
+		return dao.traerTicketsPorCuil(soporte.getCuil());
+	}
 	
+	public List<Ticket> traerTicketsPorCliente(Cliente cliente){
+		return dao.traerTicketsPorCuil(cliente.getCuil());
+	}
+	public void asignarSoporte(Ticket ticket, Soporte soporte) {
+		ticket.setSoporte(soporte);
+		ticket.setEstado(Estado.EN_PROCESO);
+		dao.actualizar(ticket);
+	}
+
 }

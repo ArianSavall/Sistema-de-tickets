@@ -25,7 +25,7 @@
 </property>
 
 		<many-to-one name="cliente" class="datos.Cliente" column="cliente_cuil" not-null="true"></many-to-one>
-		<many-to-one name="soporte" class="datos.Soporte" column="soporte_cuil" not-null="true"></many-to-one>
+		<many-to-one name="soporte" class="datos.Soporte" column="soporte_cuil" not-null="false"></many-to-one>
 		<set name="tareas" table="tarea" cascade="all-delete-orphan" lazy="true" order-by="id asc">
 			<key column="id_ticket" />
 			<one-to-many class="datos.Tarea"/> 
